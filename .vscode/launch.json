@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "MainApp",
+        "request": "launch",
+        "mainClass": "controllers.MainApp",
+        "projectName": "DigitalLibrary_58b7506a"
+    },
+    {
+        "type": "java",
+        "name": "Launch DigitalLibrary (MainApp)",
+        "request": "launch",
+        "mainClass": "controllers.MainApp",
+        "projectName": "DigitalLibrary"
+    }
+]
+}

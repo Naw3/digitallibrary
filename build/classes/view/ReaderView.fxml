@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ReaderController">
+    <HBox spacing="10">
+        <VBox spacing="4">
+            <Label text="Numéro d'abonné" />
+            <TextField fx:id="subscriberNumberField" />
+            <Label text="Nom" />
+            <TextField fx:id="lastNameField" />
+            <Label text="Prénom" />
+            <TextField fx:id="firstNameField" />
+            <Label text="Email" />
+            <TextField fx:id="emailField" />
+            <Label text="Nombre de jours d'emprunt autorisé" />
+            <TextField fx:id="maxLoanDaysField" />
+        </VBox>
+        <VBox spacing="6">
+            <Button text="Ajouter" fx:id="addReaderButton" onAction="#onAddReader" />
+            <Button text="Modifier" fx:id="editReaderButton" onAction="#onEditReader" />
+            <Button text="Supprimer" fx:id="deleteReaderButton" onAction="#onDeleteReader" />
+        </VBox>
+    </HBox>
+    <TableView fx:id="readerTable" prefHeight="250" prefWidth="600">
+        <!-- Columns editable via Scene Builder -->
+    </TableView>
+</VBox>

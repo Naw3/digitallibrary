@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.LoanController">
+    <HBox spacing="10">
+        <VBox spacing="4">
+            <Label text="Livre (ISBN)" />
+            <ComboBox fx:id="bookComboBox" />
+            <Label text="Lecteur (Numéro d'abonné)" />
+            <ComboBox fx:id="readerComboBox" />
+            <Label text="Date d'emprunt" />
+            <DatePicker fx:id="borrowDatePicker" />
+            <Label text="Date de retour" />
+            <DatePicker fx:id="dueDatePicker" />
+        </VBox>
+        <VBox spacing="6">
+            <Button text="Emprunter" fx:id="borrowButton" onAction="#onBorrow" />
+            <Button text="Retour" fx:id="returnButton" onAction="#onReturn" />
+        </VBox>
+    </HBox>
+    <TableView fx:id="loanTable" prefHeight="250" prefWidth="700">
+        <!-- Columns defined via SceneBuilder -->
+    </TableView>
+</VBox>

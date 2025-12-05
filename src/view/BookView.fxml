@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.BookController">
+    <HBox spacing="10">
+        <VBox spacing="4">
+            <Label text="ISBN" />
+            <TextField fx:id="isbnField" />
+            <Label text="Titre" />
+            <TextField fx:id="titleField" />
+            <Label text="Auteur" />
+            <TextField fx:id="authorField" />
+            <Label text="Année" />
+            <TextField fx:id="yearField" />
+            <Label text="Editeur" />
+            <TextField fx:id="publisherField" />
+        </VBox>
+        <VBox spacing="6">
+            <Button text="Ajouter" fx:id="addButton" onAction="#onAddBook" />
+            <Button text="Modifier" fx:id="editButton" onAction="#onEditBook" />
+            <Button text="Supprimer" fx:id="deleteButton" onAction="#onDeleteBook" />
+            <Button text="Exporter JSON" onAction="#onExportBooks" />
+            <Button text="Importer XML" onAction="#onImportBooksXml" />
+        </VBox>
+    </HBox>
+    <TableView fx:id="bookTable" prefHeight="250" prefWidth="1100">
+        <!-- The columns can be configured in Scene Builder -->
+    </TableView>
+</VBox>
