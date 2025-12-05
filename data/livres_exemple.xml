@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bibliotheque>
+    <livre>
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <isbn>9780451524935</isbn>
+        <editeur>Plon</editeur>
+        <statut>disponible</statut>
+    </livre>
+    <livre>
+        <titre>Le Meilleur des mondes</titre>
+        <auteur>Aldous Huxley</auteur>
+        <annee>1932</annee>
+        <isbn>9782070368228</isbn>
+        <editeur>Gallimard</editeur>
+        <statut>disponible</statut>
+    </livre>
+    <livre>
+        <titre>Fahrenheit 451</titre>
+        <auteur>Ray Bradbury</auteur>
+        <annee>1953</annee>
+        <isbn>9782070415731</isbn>
+        <editeur>Gallimard</editeur>
+        <statut>disponible</statut>
+    </livre>
+    <livre>
+        <titre>Le Seigneur des Anneaux</titre>
+        <auteur>J.R.R. Tolkien</auteur>
+        <annee>1954</annee>
+        <isbn>9782266154116</isbn>
+        <editeur>Pocket</editeur>
+        <statut>disponible</statut>
+    </livre>
+</bibliotheque>

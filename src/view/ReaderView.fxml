@@ -1,28 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ReaderController">
-    <HBox spacing="10">
-        <VBox spacing="4">
-            <Label text="Numéro d'abonné" />
-            <TextField fx:id="subscriberNumberField" />
-            <Label text="Nom" />
-            <TextField fx:id="lastNameField" />
-            <Label text="Prénom" />
-            <TextField fx:id="firstNameField" />
-            <Label text="Email" />
-            <TextField fx:id="emailField" />
-            <Label text="Nombre de jours d'emprunt autorisé" />
-            <TextField fx:id="maxLoanDaysField" />
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ReaderController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    
+    <Label text="Gestion des Lecteurs" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="20">
+        <!-- Formulaire -->
+        <VBox spacing="8" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Formulaire Lecteur" style="-fx-font-weight: bold;"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="N° Abonné :" prefWidth="150"/>
+                <TextField fx:id="subscriberNumberField" prefWidth="200" promptText="Numéro d'abonné"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Prénom :" prefWidth="150"/>
+                <TextField fx:id="firstNameField" prefWidth="200" promptText="Prénom"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Nom :" prefWidth="150"/>
+                <TextField fx:id="lastNameField" prefWidth="200" promptText="Nom de famille"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Email :" prefWidth="150"/>
+                <TextField fx:id="emailField" prefWidth="200" promptText="adresse@email.com"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Jours d'emprunt max :" prefWidth="150"/>
+                <TextField fx:id="maxLoanDaysField" prefWidth="200" promptText="Nombre de jours"/>
+            </HBox>
+            
+            <!-- Boutons d'action -->
+            <HBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+                <Button text="Ajouter" fx:id="addReaderButton" onAction="#onAddReader" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Button text="Modifier" fx:id="editReaderButton" onAction="#onEditReader" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button text="Supprimer" fx:id="deleteReaderButton" onAction="#onDeleteReader" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                <Button text="Effacer" onAction="#onClearFields"/>
+            </HBox>
         </VBox>
-        <VBox spacing="6">
-            <Button text="Ajouter" fx:id="addReaderButton" onAction="#onAddReader" />
-            <Button text="Modifier" fx:id="editReaderButton" onAction="#onEditReader" />
-            <Button text="Supprimer" fx:id="deleteReaderButton" onAction="#onDeleteReader" />
-            <Button text="Exporter JSON" onAction="#onExportReaders" />
+        
+        <!-- Boutons Import/Export -->
+        <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Import / Export" style="-fx-font-weight: bold;"/>
+            <Button text="Exporter JSON" onAction="#onExportReaders" prefWidth="150" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            <Button text="Importer XML" onAction="#onImportReadersXml" prefWidth="150" style="-fx-background-color: #9C27B0; -fx-text-fill: white;"/>
         </VBox>
     </HBox>
-    <TableView fx:id="readerTable" prefHeight="250" prefWidth="1100">
-        <!-- Columns editable via Scene Builder -->
+    
+    <!-- Table des lecteurs -->
+    <Label text="Liste des Lecteurs" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="readerTable" prefHeight="350" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="subscriberNumberColumn" text="N° Abonné" prefWidth="120"/>
+            <TableColumn fx:id="firstNameColumn" text="Prénom" prefWidth="150"/>
+            <TableColumn fx:id="lastNameColumn" text="Nom" prefWidth="150"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="250"/>
+            <TableColumn fx:id="maxLoanDaysColumn" text="Jours max" prefWidth="100"/>
+        </columns>
     </TableView>
 </VBox>

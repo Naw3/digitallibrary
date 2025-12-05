@@ -2,28 +2,48 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.StatisticsController">
-    <Label text="Statistiques" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-    <HBox spacing="10">
-        <VBox>
-            <Label text="Livres les plus empruntés" />
-            <BarChart fx:id="topBooksChart" prefWidth="600" prefHeight="300" >
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.StatisticsController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Statistiques de la Bibliothèque" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Button text="Actualiser" onAction="#refreshStatistics" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <!-- Résumé -->
+    <HBox spacing="30" style="-fx-padding: 10; -fx-background-color: #f5f5f5; -fx-border-radius: 5;">
+        <Label fx:id="totalBooksLabel" text="Total livres : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="totalReadersLabel" text="Total lecteurs : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="totalLoansLabel" text="Total emprunts : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="overdueLoansLabel" text="Emprunts en retard : 0" style="-fx-font-size: 14px;"/>
+    </HBox>
+    
+    <!-- Graphiques -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="📚 Livres les plus empruntés" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <BarChart fx:id="topBooksChart" prefWidth="550" prefHeight="350" VBox.vgrow="ALWAYS">
                 <xAxis>
-                    <CategoryAxis fx:id="bookCategory" />
+                    <CategoryAxis label="Livres"/>
                 </xAxis>
                 <yAxis>
-                    <NumberAxis fx:id="bookNumber" />
+                    <NumberAxis label="Nombre d'emprunts"/>
                 </yAxis>
             </BarChart>
         </VBox>
-        <VBox>
-            <Label text="Nombre d'emprunts par lecteur" />
-            <BarChart fx:id="loansPerReaderChart" prefWidth="600" prefHeight="300">
+        
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="👤 Nombre d'emprunts par lecteur" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <BarChart fx:id="loansPerReaderChart" prefWidth="550" prefHeight="350" VBox.vgrow="ALWAYS">
                 <xAxis>
-                    <CategoryAxis fx:id="readerCategory" />
+                    <CategoryAxis label="Lecteurs"/>
                 </xAxis>
                 <yAxis>
-                    <NumberAxis fx:id="readerNumber" />
+                    <NumberAxis label="Nombre d'emprunts"/>
                 </yAxis>
             </BarChart>
         </VBox>

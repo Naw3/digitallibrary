@@ -1,29 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.BookController">
-    <HBox spacing="10">
-        <VBox spacing="4">
-            <Label text="ISBN" />
-            <TextField fx:id="isbnField" />
-            <Label text="Titre" />
-            <TextField fx:id="titleField" />
-            <Label text="Auteur" />
-            <TextField fx:id="authorField" />
-            <Label text="Année" />
-            <TextField fx:id="yearField" />
-            <Label text="Editeur" />
-            <TextField fx:id="publisherField" />
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.BookController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    
+    <Label text="Gestion des Livres" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="20">
+        <!-- Formulaire -->
+        <VBox spacing="8" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Formulaire Livre" style="-fx-font-weight: bold;"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="ISBN :" prefWidth="80"/>
+                <TextField fx:id="isbnField" prefWidth="200" promptText="ISBN du livre"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Titre :" prefWidth="80"/>
+                <TextField fx:id="titleField" prefWidth="200" promptText="Titre du livre"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Auteur :" prefWidth="80"/>
+                <TextField fx:id="authorField" prefWidth="200" promptText="Nom de l'auteur"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Année :" prefWidth="80"/>
+                <TextField fx:id="yearField" prefWidth="200" promptText="Année de publication"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Éditeur :" prefWidth="80"/>
+                <TextField fx:id="publisherField" prefWidth="200" promptText="Nom de l'éditeur"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Statut :" prefWidth="80"/>
+                <ComboBox fx:id="statusComboBox" prefWidth="200"/>
+            </HBox>
+            
+            <!-- Boutons d'action -->
+            <HBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+                <Button text="Ajouter" fx:id="addButton" onAction="#onAddBook" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Button text="Modifier" fx:id="editButton" onAction="#onEditBook" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button text="Supprimer" fx:id="deleteButton" onAction="#onDeleteBook" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                <Button text="Effacer" onAction="#onClearFields"/>
+            </HBox>
         </VBox>
-        <VBox spacing="6">
-            <Button text="Ajouter" fx:id="addButton" onAction="#onAddBook" />
-            <Button text="Modifier" fx:id="editButton" onAction="#onEditBook" />
-            <Button text="Supprimer" fx:id="deleteButton" onAction="#onDeleteBook" />
-            <Button text="Exporter JSON" onAction="#onExportBooks" />
-            <Button text="Importer XML" onAction="#onImportBooksXml" />
+        
+        <!-- Boutons Import/Export -->
+        <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Import / Export" style="-fx-font-weight: bold;"/>
+            <Button text="Exporter JSON" onAction="#onExportBooks" prefWidth="150" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            <Button text="Importer XML" onAction="#onImportBooksXml" prefWidth="150" style="-fx-background-color: #9C27B0; -fx-text-fill: white;"/>
         </VBox>
     </HBox>
-    <TableView fx:id="bookTable" prefHeight="250" prefWidth="1100">
-        <!-- The columns can be configured in Scene Builder -->
+    
+    <!-- Table des livres -->
+    <Label text="Liste des Livres" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="bookTable" prefHeight="350" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="130"/>
+            <TableColumn fx:id="titleColumn" text="Titre" prefWidth="250"/>
+            <TableColumn fx:id="authorColumn" text="Auteur" prefWidth="180"/>
+            <TableColumn fx:id="yearColumn" text="Année" prefWidth="80"/>
+            <TableColumn fx:id="publisherColumn" text="Éditeur" prefWidth="150"/>
+            <TableColumn fx:id="statusColumn" text="Statut" prefWidth="100"/>
+        </columns>
     </TableView>
 </VBox>
