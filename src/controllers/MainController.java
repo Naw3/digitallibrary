@@ -16,6 +16,15 @@ public class MainController {
     private StackPane contentPane;
 
     @FXML
+    public void initialize() {
+        try {
+            openBooks();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void openBooks() throws IOException {
         loadView("view/BookView.fxml");
     }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.StatisticsController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Statistiques de la Bibliothèque" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Button text="Actualiser" onAction="#refreshStatistics" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <!-- Résumé -->
+    <HBox spacing="30" style="-fx-padding: 10; -fx-background-color: #f5f5f5; -fx-border-radius: 5;">
+        <Label fx:id="totalBooksLabel" text="Total livres : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="totalReadersLabel" text="Total lecteurs : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="totalLoansLabel" text="Total emprunts : 0" style="-fx-font-size: 14px;"/>
+        <Label fx:id="overdueLoansLabel" text="Emprunts en retard : 0" style="-fx-font-size: 14px;"/>
+    </HBox>
+    
+    <!-- Graphiques -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="📚 Livres les plus empruntés" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <BarChart fx:id="topBooksChart" prefWidth="550" prefHeight="350" VBox.vgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="Livres"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Nombre d'emprunts"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+        
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="👤 Nombre d'emprunts par lecteur" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <BarChart fx:id="loansPerReaderChart" prefWidth="550" prefHeight="350" VBox.vgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="Lecteurs"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Nombre d'emprunts"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </HBox>
+</VBox>

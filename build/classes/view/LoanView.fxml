@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox spacing="10" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.LoanController">
-    <HBox spacing="10">
-        <VBox spacing="4">
-            <Label text="Livre (ISBN)" />
-            <ComboBox fx:id="bookComboBox" />
-            <Label text="Lecteur (Numéro d'abonné)" />
-            <ComboBox fx:id="readerComboBox" />
-            <Label text="Date d'emprunt" />
-            <DatePicker fx:id="borrowDatePicker" />
-            <Label text="Date de retour" />
-            <DatePicker fx:id="dueDatePicker" />
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" alignment="TOP_LEFT" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.LoanController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+    
+    <Label text="Gestion des Emprunts et Retours" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="20">
+        <!-- Formulaire d'emprunt -->
+        <VBox spacing="8" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Nouvel Emprunt" style="-fx-font-weight: bold;"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Livre :" prefWidth="80"/>
+                <ComboBox fx:id="bookComboBox" prefWidth="300" promptText="Sélectionner un livre disponible"/>
+            </HBox>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Lecteur :" prefWidth="80"/>
+                <ComboBox fx:id="readerComboBox" prefWidth="300" promptText="Sélectionner un lecteur"/>
+            </HBox>
+            
+            <!-- Boutons d'action -->
+            <HBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+                <Button text="Emprunter" fx:id="borrowButton" onAction="#onBorrow" prefWidth="120" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Enregistrer Retour" fx:id="returnButton" onAction="#onReturn" prefWidth="150" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
         </VBox>
-        <VBox spacing="6">
-            <Button text="Emprunter" fx:id="borrowButton" onAction="#onBorrow" />
-            <Button text="Retour" fx:id="returnButton" onAction="#onReturn" />
+        
+        <!-- Informations sur les retards -->
+        <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
+            <Label text="Retards" style="-fx-font-weight: bold;"/>
+            <Label fx:id="overdueCountLabel" text="Emprunts en retard : 0"/>
+            <Button text="Voir les retards" onAction="#onShowOverdueByReader" prefWidth="150" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button text="Rafraîchir" onAction="#onRefresh" prefWidth="150"/>
         </VBox>
     </HBox>
-    <TableView fx:id="loanTable" prefHeight="250" prefWidth="700">
-        <!-- Columns defined via SceneBuilder -->
+    
+    <!-- Table des emprunts -->
+    <Label text="Liste des Emprunts" style="-fx-font-weight: bold;"/>
+    <TableView fx:id="loanTable" prefHeight="200" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="loanIdColumn" text="ID" prefWidth="100" visible="false"/>
+            <TableColumn fx:id="bookTitleColumn" text="Livre" prefWidth="250"/>
+            <TableColumn fx:id="readerNameColumn" text="Lecteur" prefWidth="200"/>
+            <TableColumn fx:id="borrowDateColumn" text="Date d'emprunt" prefWidth="120"/>
+            <TableColumn fx:id="dueDateColumn" text="Date de retour prévue" prefWidth="150"/>
+            <TableColumn fx:id="statusColumn" text="Statut" prefWidth="120"/>
+        </columns>
+    </TableView>
+    
+    <!-- Table des retards -->
+    <Label text="Emprunts en Retard" style="-fx-font-weight: bold; -fx-text-fill: #f44336;"/>
+    <TableView fx:id="overdueTable" prefHeight="150">
+        <columns>
+            <TableColumn fx:id="overdueBookColumn" text="Livre" prefWidth="250"/>
+            <TableColumn fx:id="overdueReaderColumn" text="Lecteur" prefWidth="200"/>
+            <TableColumn fx:id="overdueDateColumn" text="Date prévue" prefWidth="120"/>
+            <TableColumn fx:id="overdueDaysColumn" text="Retard" prefWidth="100"/>
+        </columns>
     </TableView>
 </VBox>

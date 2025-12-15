@@ -8,6 +8,8 @@
             <Button text="Gestion Livres" fx:id="booksBtn" onAction="#openBooks" />
             <Button text="Gestion Lecteurs" fx:id="readersBtn" onAction="#openReaders" />
             <Button text="Emprunts/Retours" fx:id="loansBtn" onAction="#openLoans" />
+            <Separator />
+            <Button text="Statistiques" fx:id="statsBtn" onAction="#openStats" />
         </ToolBar>
     </top>
     <center>
