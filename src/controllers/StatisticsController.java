@@ -8,9 +8,6 @@ import storage.Repository;
 
 import java.util.Map;
 
-/**
- * Controller for statistics view — fills charts based on repository data
- */
 public class StatisticsController {
 
     @FXML
@@ -18,16 +15,16 @@ public class StatisticsController {
 
     @FXML
     private BarChart<String, Number> loansPerReaderChart;
-    
+
     @FXML
     private Label totalBooksLabel;
-    
+
     @FXML
     private Label totalReadersLabel;
-    
+
     @FXML
     private Label totalLoansLabel;
-    
+
     @FXML
     private Label overdueLoansLabel;
 
@@ -38,7 +35,7 @@ public class StatisticsController {
         repository = Repository.getInstance();
         refreshStatistics();
     }
-    
+
     @FXML
     public void refreshStatistics() {
         fillTopBooksChart();
@@ -50,17 +47,15 @@ public class StatisticsController {
         Map<String, Long> top = repository.topBorrowedBooks(10);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Nombre d'emprunts");
-        
+
         for (Map.Entry<String, Long> e : top.entrySet()) {
-            // Afficher le titre du livre plutôt que l'ISBN
             String bookTitle = repository.getBookTitle(e.getKey());
-            // Tronquer le titre si trop long
             if (bookTitle.length() > 20) {
                 bookTitle = bookTitle.substring(0, 17) + "...";
             }
             series.getData().add(new XYChart.Data<>(bookTitle, e.getValue()));
         }
-        
+
         topBooksChart.getData().clear();
         if (!series.getData().isEmpty()) {
             topBooksChart.getData().add(series);
@@ -71,19 +66,18 @@ public class StatisticsController {
         Map<String, Long> perReader = repository.loansCountByReader();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Nombre d'emprunts");
-        
+
         for (Map.Entry<String, Long> e : perReader.entrySet()) {
-            // Afficher le nom du lecteur plutôt que le numéro d'abonné
             String readerName = repository.getReaderName(e.getKey());
             series.getData().add(new XYChart.Data<>(readerName, e.getValue()));
         }
-        
+
         loansPerReaderChart.getData().clear();
         if (!series.getData().isEmpty()) {
             loansPerReaderChart.getData().add(series);
         }
     }
-    
+
     private void updateSummaryLabels() {
         if (totalBooksLabel != null) {
             totalBooksLabel.setText("Total livres : " + repository.getBooks().size());

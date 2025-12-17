@@ -61,7 +61,9 @@
         <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
             <Label text="Import / Export" style="-fx-font-weight: bold;"/>
             <Button text="Exporter JSON" onAction="#onExportBooks" prefWidth="150" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            <Button text="Importer JSON" onAction="#onImportBooksJson" prefWidth="150" style="-fx-background-color: #FF5722; -fx-text-fill: white;"/>
             <Button text="Importer XML" onAction="#onImportBooksXml" prefWidth="150" style="-fx-background-color: #9C27B0; -fx-text-fill: white;"/>
+            <Button text="Exporter XML" onAction="#onExportBooksXml" prefWidth="150" style="-fx-background-color: #673AB7; -fx-text-fill: white;"/>
         </VBox>
     </HBox>
     

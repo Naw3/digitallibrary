@@ -1,8 +1,5 @@
 package models;
 
-/**
- * Model representing a Book
- */
 public class Book {
     private String isbn;
     private String title;
@@ -16,7 +13,8 @@ public class Book {
         BORROWED
     }
 
-    public Book() { }
+    public Book() {
+    }
 
     public Book(String isbn, String title, String author, int year, String publisher, Status status) {
         this.isbn = isbn;
@@ -27,23 +25,53 @@ public class Book {
         this.status = status;
     }
 
-    public String getIsbn() { return isbn; }
-    public void setIsbn(String isbn) { this.isbn = isbn; }
+    public String getIsbn() {
+        return isbn;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-    public String getAuthor() { return author; }
-    public void setAuthor(String author) { this.author = author; }
+    public String getTitle() {
+        return title;
+    }
 
-    public int getYear() { return year; }
-    public void setYear(int year) { this.year = year; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public String getPublisher() { return publisher; }
-    public void setPublisher(String publisher) { this.publisher = publisher; }
+    public String getAuthor() {
+        return author;
+    }
 
-    public Status getStatus() { return status; }
-    public void setStatus(Status status) { this.status = status; }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {

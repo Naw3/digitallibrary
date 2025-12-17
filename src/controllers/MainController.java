@@ -7,9 +7,6 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-/**
- * Controller for the main view. It swaps subviews into the content area
- */
 public class MainController {
 
     @FXML
