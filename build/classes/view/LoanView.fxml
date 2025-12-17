@@ -11,7 +11,6 @@
     <Label text="Gestion des Emprunts et Retours" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
     
     <HBox spacing="20">
-        <!-- Formulaire d'emprunt -->
         <VBox spacing="8" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
             <Label text="Nouvel Emprunt" style="-fx-font-weight: bold;"/>
             
@@ -25,7 +24,6 @@
                 <ComboBox fx:id="readerComboBox" prefWidth="300" promptText="Sélectionner un lecteur"/>
             </HBox>
             
-            <!-- Boutons d'action -->
             <HBox spacing="10" alignment="CENTER">
                 <padding>
                     <Insets top="10"/>
@@ -35,7 +33,6 @@
             </HBox>
         </VBox>
         
-        <!-- Informations sur les retards -->
         <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
             <Label text="Retards" style="-fx-font-weight: bold;"/>
             <Label fx:id="overdueCountLabel" text="Emprunts en retard : 0"/>
@@ -44,7 +41,6 @@
         </VBox>
     </HBox>
     
-    <!-- Table des emprunts -->
     <Label text="Liste des Emprunts" style="-fx-font-weight: bold;"/>
     <TableView fx:id="loanTable" prefHeight="200" VBox.vgrow="ALWAYS">
         <columns>
@@ -57,7 +53,6 @@
         </columns>
     </TableView>
     
-    <!-- Table des retards -->
     <Label text="Emprunts en Retard" style="-fx-font-weight: bold; -fx-text-fill: #f44336;"/>
     <TableView fx:id="overdueTable" prefHeight="150">
         <columns>

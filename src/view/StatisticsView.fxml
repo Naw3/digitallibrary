@@ -2,6 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.StatisticsController">
     <padding>

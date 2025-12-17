@@ -2,7 +2,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainController">
-    <!-- Main navigation panel -->
     <top>
         <ToolBar>
             <Button text="Gestion Livres" fx:id="booksBtn" onAction="#openBooks" />
@@ -14,7 +13,6 @@
     </top>
     <center>
         <StackPane fx:id="contentPane">
-            <!-- Content will be loaded here -->
         </StackPane>
     </center>
 </BorderPane>

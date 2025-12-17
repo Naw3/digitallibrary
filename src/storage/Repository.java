@@ -434,6 +434,20 @@ public class Repository {
                 .collect(Collectors.toList());
     }
 
+    public int getLoansCountThisMonth(String subscriberNumber) {
+        LocalDate now = LocalDate.now();
+        LocalDate startOfMonth = now.withDayOfMonth(1);
+        LocalDate startOfNextMonth = startOfMonth.plusMonths(1);
+
+        return (int) loans.stream()
+                .filter(l -> subscriberNumber.equals(l.getReaderSubscriberNumber()))
+                .filter(l -> {
+                    LocalDate d = l.getBorrowDate();
+                    return d != null && !d.isBefore(startOfMonth) && d.isBefore(startOfNextMonth);
+                })
+                .count();
+    }
+
     public Map<String, Long> topBorrowedBooks(int limit) {
         Map<String, Long> counts = loans.stream()
                 .collect(Collectors.groupingBy(Loan::getBookIsbn, Collectors.counting()));

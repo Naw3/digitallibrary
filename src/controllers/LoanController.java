@@ -193,6 +193,11 @@ public class LoanController {
             showAlert(Alert.AlertType.WARNING, "Attention", null, "Veuillez sélectionner un lecteur.");
             return;
         }
+        int loansThisMonth = repository.getLoansCountThisMonth(selectedReader.getSubscriberNumber());
+        if (loansThisMonth >= 2) {
+            showAlert(Alert.AlertType.WARNING, "Attention", null, "Limite atteinte : ce lecteur a déjà " + loansThisMonth + " emprunt(s) ce mois-ci.");
+            return;
+        }
 
         if (!repository.canBorrowBook(selectedBook.getIsbn())) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Emprunt impossible",

@@ -11,7 +11,6 @@
     <Label text="Gestion des Lecteurs" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
     
     <HBox spacing="20">
-        <!-- Formulaire -->
         <VBox spacing="8" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
             <Label text="Formulaire Lecteur" style="-fx-font-weight: bold;"/>
             
@@ -40,7 +39,6 @@
                 <TextField fx:id="maxLoanDaysField" prefWidth="200" promptText="Nombre de jours"/>
             </HBox>
             
-            <!-- Boutons d'action -->
             <HBox spacing="10" alignment="CENTER">
                 <padding>
                     <Insets top="10"/>
@@ -52,7 +50,6 @@
             </HBox>
         </VBox>
         
-        <!-- Boutons Import/Export -->
         <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;">
             <Label text="Import / Export" style="-fx-font-weight: bold;"/>
             <Button text="Exporter JSON" onAction="#onExportReaders" prefWidth="150" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
@@ -62,7 +59,6 @@
         </VBox>
     </HBox>
     
-    <!-- Table des lecteurs -->
     <Label text="Liste des Lecteurs" style="-fx-font-weight: bold;"/>
     <TableView fx:id="readerTable" prefHeight="350" VBox.vgrow="ALWAYS">
         <columns>
